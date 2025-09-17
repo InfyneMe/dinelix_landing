@@ -24,7 +24,8 @@ const formSchema = z.object({
 });
 
 const Contact = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -36,17 +37,22 @@ const Contact = () => {
     },
   });
 
+
   const onSubmit = async () => {
-    setIsSubmitting(true);
+    setStatus('submitting');
     
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    toast("Message sent!. Thank you for your message. We'll get back to you soon.");
+    toast("✅ Message sent! Thank you for reaching out. We'll get back to you soon.");
     
     form.reset();
-    setIsSubmitting(false);
+    setStatus('success');
+
+    // Reset back to idle after a delay (optional)
+    setTimeout(() => setStatus('idle'), 3000);
   };
+
 
   const contactInfo = [
     {
@@ -210,13 +216,15 @@ const Contact = () => {
                       )}
                     />
 
-                    <Button  
+                   <Button  
                       size="lg"
                       type="submit" 
                       className="w-full" 
-                      disabled={isSubmitting}
+                      disabled={status === 'submitting'}
                     >
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                      {status === 'submitting' && 'Sending...'}
+                      {status === 'success' && 'Message Sent Successfully 🎉'}
+                      {status === 'idle' && 'Send Message'}
                     </Button>
                   </form>
                 </Form>

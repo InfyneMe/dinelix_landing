@@ -2,7 +2,6 @@
 
 import Header from '@/components/header';
 import Hero from '@/components/hero';
-import TrustedBrands from '@/components/trusted-brands';
 import HowItWorks from '@/components/how-it-works';
 import Features from '@/components/features';
 import Testimonials from '@/components/testimonails';
@@ -17,7 +16,6 @@ export default function Page() {
 		<div className="min-h-screen">
 			<Header />
       <Hero />
-      {/* <TrustedBrands /> */}
       <HowItWorks />
       <Features />
       <Testimonials />
