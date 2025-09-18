@@ -28,8 +28,8 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    console.error(error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    const errMessage = error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json({ error: errMessage }, { status: 500 });
   }
 }
