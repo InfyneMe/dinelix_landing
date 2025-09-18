@@ -55,7 +55,7 @@ const Contact = () => {
         toast("❌ Failed to send message. Please try again.");
         setStatus('idle');
       }
-    } catch (error) {
+    } catch {
       toast("⚠️ Something went wrong.");
       setStatus('idle');
     }
