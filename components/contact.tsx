@@ -38,20 +38,29 @@ const Contact = () => {
   });
 
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setStatus('submitting');
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast("✅ Message sent! Thank you for reaching out. We'll get back to you soon.");
-    
-    form.reset();
-    setStatus('success');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-    // Reset back to idle after a delay (optional)
-    setTimeout(() => setStatus('idle'), 3000);
+      if (res.ok) {
+        toast("✅ Message sent! We'll get back to you soon.");
+        form.reset();
+        setStatus('success');
+      } else {
+        toast("❌ Failed to send message. Please try again.");
+        setStatus('idle');
+      }
+    } catch (error) {
+      toast("⚠️ Something went wrong.");
+      setStatus('idle');
+    }
   };
+
 
 
   const contactInfo = [

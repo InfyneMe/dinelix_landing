@@ -34,8 +34,9 @@ const Footer = () => {
                 <Logo />
               </div>
               <p className="text-muted-foreground mb-6 max-w-sm">
-                Transform your business with our powerful SaaS platform. Scale faster, work smarter, grow bigger.
-              </p>
+  Simplify restaurant management with DineLix POS. Serve faster, reduce errors, and boost profits with ease.
+</p>
+
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
