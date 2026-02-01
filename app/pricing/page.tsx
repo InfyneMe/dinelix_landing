@@ -3,7 +3,7 @@
 import { useState } from 'react'; // Remove useEffect since we're not using contextData
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader} from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Check, Star, ArrowLeft, Calculator } from 'lucide-react';
 import { cn } from '@/lib/utils';
