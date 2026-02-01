@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Check, Star, ArrowRight, ExternalLink } from 'lucide-react';
@@ -16,7 +16,7 @@ const Pricing = () => {
 
   const plans = [
     {
-      name: 'Starter',
+      name: 'Launch',
       yearlyPrice: '₹499',
       period: '/month',
       description: 'Perfect for single-location independent restaurants',
@@ -31,7 +31,7 @@ const Pricing = () => {
       popular: false
     },
     {
-      name: 'Professional',
+      name: 'Growth',
       yearlyPrice: '₹1,499',
       period: '/month',
       description: 'Growing multi-location restaurant brands',
@@ -46,7 +46,7 @@ const Pricing = () => {
       popular: false
     },
     {
-      name: 'Enterprise',
+      name: 'Scale',
       yearlyPrice: '₹2,999',
       period: '/month',
       description: 'Multi-city chain & franchise operations',
@@ -62,7 +62,7 @@ const Pricing = () => {
     },
     {
       name: 'Custom',
-      yearlyPrice: 'Let\'s Talk',
+      yearlyPrice: 'Let&apos;s Talk',
       period: '',
       description: 'Tailored enterprise-grade solutions',
       credits: 'Custom pricing & features',
@@ -79,7 +79,6 @@ const Pricing = () => {
   ];
 
   const handleViewFullPricing = () => {
-    // Store context data if needed
     const pricingContext = {
       source: 'landing-page',
       timestamp: new Date().toISOString(),
@@ -87,15 +86,12 @@ const Pricing = () => {
     };
 
     sessionStorage.setItem('pricingContext', JSON.stringify(pricingContext));
-
-    // Navigate to full pricing page
     router.push('/pricing');
   };
 
   return (
     <section id="pricing" className="py-24 bg-background border-b border-border/50">
       <div className="container mx-auto px-6">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -104,16 +100,13 @@ const Pricing = () => {
           className="flex items-center justify-center flex-col text-center gap-5"
         >
           <CustomBadge>Pricing</CustomBadge>
-
           <CustomTitle>Simple & Transparent Pricing</CustomTitle>
-
           <CustomSubtitle className="mb-6">
             Pay only for completed orders. Start at ₹499/month.
             <br />
             Scale from one outlet to nationwide operations.
           </CustomSubtitle>
 
-          {/* View Full Pricing Link */}
           <motion.button
             onClick={handleViewFullPricing}
             initial={{ opacity: 0 }}
@@ -255,7 +248,6 @@ const Pricing = () => {
           ))}
         </div>
 
-        {/* Trust Indicators */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -280,7 +272,6 @@ const Pricing = () => {
           </div>
         </motion.div>
 
-        {/* Bottom CTA for Full Pricing */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react'; // Remove useEffect since we're not using contextData
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Check, Star, ArrowLeft, Calculator } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -11,19 +11,13 @@ import Link from 'next/link';
 
 export default function PricingPage() {
     const [credits, setCredits] = useState(1000);
-    const [contextData, setContextData] = useState(null);
 
-    useEffect(() => {
-        // Retrieve context data from sessionStorage
-        const stored = sessionStorage.getItem('pricingContext');
-        if (stored) {
-            setContextData(JSON.parse(stored));
-        }
-    }, []);
+    // Remove the useEffect and contextData state since it's not used
+    // If you need it later, you can add it back
 
     const allPlans = [
         {
-            name: 'Starter',
+            name: 'Launch',
             monthlyPrice: '₹499',
             yearlyPrice: '₹4,999',
             credits: 500,
@@ -41,7 +35,7 @@ export default function PricingPage() {
             popular: false
         },
         {
-            name: 'Professional',
+            name: 'Growth',
             monthlyPrice: '₹1,499',
             yearlyPrice: '₹14,999',
             credits: 2000,
@@ -60,7 +54,7 @@ export default function PricingPage() {
             popular: false
         },
         {
-            name: 'Enterprise',
+            name: 'Scale',
             monthlyPrice: '₹2,999',
             yearlyPrice: '₹29,999',
             credits: 10000,
@@ -284,7 +278,7 @@ export default function PricingPage() {
                             </Badge>
                             <h2 className="text-4xl font-bold mb-4">Credit Calculator</h2>
                             <p className="text-lg text-muted-foreground">
-                                See exactly what you'll pay for any volume
+                                See exactly what you&apos;ll pay for any volume
                             </p>
                         </div>
 
